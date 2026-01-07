@@ -1,0 +1,51 @@
+command: kubectl get clusterroles | grep eks
+
+#################################################################
+command: kubectl describe clusterrole eks:k8s-metrics
+output:
+Name:         eks:k8s-metrics
+Labels:       <none>
+Annotations:  <none>
+PolicyRule:
+  Resources         Non-Resource URLs  Resource Names  Verbs
+  ---------         -----------------  --------------  -----
+                    [/metrics]         []              [get]
+  endpoints         []                 []              [list]
+  nodes             []                 []              [list]
+  pods              []                 []              [list]
+  deployments.apps  []                 []              [list]
+#################################################################
+
+
+command: kubectl get clusterrolebindings | grep eks
+
+#################################################################
+command: kubectl describe clusterrolebinding eks:k8s-metrics
+output:
+Name:         eks:k8s-metrics
+Labels:       <none>
+Annotations:  <none>
+Role:
+  Kind:  ClusterRole
+  Name:  eks:k8s-metrics
+Subjects:
+  Kind  Name             Namespace
+  ----  ----             ---------
+  User  eks:k8s-metrics
+#################################################################
+
+command: kubectl get roles -n kube-system | grep eks
+command: kubectl describe role eks:k8s-metrics -n kube-system
+#################################################################
+output:
+Name:         eks:k8s-metrics
+Labels:       <none>
+Annotations:  <none>
+PolicyRule:
+  Resources         Non-Resource URLs  Resource Names             Verbs
+  ---------         -----------------  --------------             -----
+  daemonsets.apps   []                 [aws-node]                 [get]
+  deployments.apps  []                 [vpc-resource-controller]  [get]
+#################################################################
+
+
