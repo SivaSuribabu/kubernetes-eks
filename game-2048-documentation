@@ -1,3 +1,7 @@
+#######################################################################################################################################################################################################
+Follow this documentation to create the eks cluster and namespcae inside the cluster and creating the deployment file, service file, ingress and finally execute the project using alb endpoint.
+#######################################################################################################################################################################################################
+
 Prerequisites
 
 An EKS Auto Mode cluster
