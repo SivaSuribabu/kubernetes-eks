@@ -12,3 +12,23 @@ Step 2: Create the Namespace
 command: kubectl create namespace game-2048
 command: kubectl get ns
 
+Setp 3:
+#apply the deployment
+command: kubectl apply -f deployment.yaml -n game-20418
+command: kubectl get pods -n game-2048
+
+Step 4:
+#crate service
+command: kubectl apply -f service.yaml -n game-2048
+command: kubectl get svc -n game-2048
+
+Step 5 :
+#create Ingressclass
+command: kubectl apply -f kingressclass.yaml -n game-2048
+command: kubectl get ing -n game-2048
+
+Step 6 :
+#create ingress
+command: kubectl apply -f ingrss.yaml -n game-2048
+command: kubectl get ing -n game-2048
+command: kubectl describe ing -n game-2048
