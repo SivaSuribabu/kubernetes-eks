@@ -1,0 +1,30 @@
+Get started with Amazon EKS – eksctl
+Prerequisites:
+1. kubectl is installed
+2. eksctl is installed
+3. awscli is installed & configured with proper permissions
+
+AWS Account Profiles:
+aws configure list-profiles  #This will show you the aws configures profiles
+aws sts get-caller-identity #this will show you the account id
+aws configure get region --profile default # This will show the current region you're in
+aws configure list --profile default #This will show the current profile details
+
+step-1: creating amazon eks cluster and nodes
+command: eksctl create cluster --name my-eks-cluster --region us-east-1
+command: eksctl create cluster --name my-eks-cluster --region us-east-1 --fargate
+
+step2: View and update the context in terminal (kubectl)
+command: kubectl config current-context
+command: aws eks update-kubeconfig --name my-eks-cluster --region us-east-1
+command: kubectl config current-context
+command: eksctl get clusters
+
+step3: view the kubenetes nodes
+command: kubectl get nodes -o wide
+command: kubectl get pods -A -o wide
+
+step4:
+command: eksctl delete cluster --name my-ekscluster --region us-east-1
+
+
