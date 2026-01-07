@@ -1,0 +1,12 @@
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  labels:
+    app.kubernetes.io/name: LoadBalancerController
+  name: alb
+spec:
+  controller: eks.amazonaws.com/alb
+
+#create Ingressclass
+#kubectl apply -f kingressclass.yaml -n game-2048
+#kubectl get ing -n game-2048
