@@ -22,3 +22,7 @@ spec:
           resources:
             requests:
               cpu: "0.5"
+
+#apply the deployment
+#command: kubectl apply -f deployment.yaml -n game-20418
+#command: kubectl get pods -n game-2048
