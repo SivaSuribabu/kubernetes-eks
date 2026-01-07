@@ -1,0 +1,47 @@
+#######################################################################################################################################################################################
+The below are the instructions to install and configure the eks cluster and observability tools include Promethues, Grafana, Alert manager, elastic search, flunetbit, kibana, jaeger
+#######################################################################################################################################################################################
+
+Install and Configure the Required tools
+----------------------------------------
+1. Install the eksctl 
+2. Install the kubectl
+3. Install and configure the awscli
+
+
+Create the eks cluster
+----------------------
+eksctl create culuster  --name my-eks-cluster \
+                        --region us-east-1 \
+                        --without-nodegroup \
+                        --zones us-east-1a, us-east-1b \
+
+Configure the OpenIdConnector
+----------------------------
+eksctl utils associate-iam-oidc-provider \
+  --region us-east-1 \
+  --cluster my-eks-cluster \
+  --approve
+
+
+Create the NodeGroup
+---------------------
+eksctl create nodegroup --cluster=observability \
+                        --region=us-east-1 \
+                        --name=observability-ng-private \
+                        --node-type=t3.medium \
+                        --nodes-min=2 \
+                        --nodes-max=3 \
+                        --node-volume-size=20 \
+                        --managed \
+                        --asg-access \
+                        --external-dns-access \
+                        --full-ecr-access \
+                        --appmesh-access \
+                        --alb-ingress-access \
+                        --node-private-networking
+
+
+Update the kube-config file
+---------------------------  
+aws eks update-kubeconfig --name my-eks-cluster --region us-east-1
