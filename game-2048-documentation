@@ -40,3 +40,24 @@ command: kubectl delete namespace -n game-2048
 Step 8 :
 #Delete cluster
 command: eksctl delete cluster --name game-2048 --region us-east-1
+
+#################################################################
+What’s Happening Behind the Scenes
+#################################################################
+
+The deployment creates 5 pods running the 2048 game
+The service provides stable network access to these pods
+
+EKS Auto Mode:
+Creates an Application Load Balancer in AWS
+Configures target groups for the pods
+Sets up routing rules to direct traffic to the service
+
+#################################################################
+Troubleshooting
+#################################################################
+
+If the game doesn’t load:
+Ensure all pods are running: kubectl get pods -n game-2048
+Check ingress status: kubectl describe ingress -n game-2048
+Verify ALB health checks: Check the target group health in AWS Console
