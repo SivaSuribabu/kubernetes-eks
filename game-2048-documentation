@@ -1,0 +1,14 @@
+Prerequisites
+
+An EKS Auto Mode cluster
+kubectl configured to interact with your cluster
+Appropriate IAM permissions for creating ALB resources
+
+Step 1: Create the EKS Cluster
+command : eksctl create cluster --name game-2048 --region us-east-1 
+command: eksctl get clusters
+
+Step 2: Create the Namespace
+command: kubectl create namespace game-2048
+command: kubectl get ns
+
