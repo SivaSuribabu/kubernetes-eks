@@ -1,0 +1,30 @@
+pre-requisites:
+1. eksctl installed
+2. kubectl installed
+3. awscli installed
+4. awscli is configured
+5. must have pem key with us
+6. eks cluster created
+7. eksctl version
+
+
+Note: 
+You can’t create managed nodes in an AWS Region where you have AWS Outposts or AWS Wavelength enabled. You can create self-managed nodes instead.
+
+Creating the node-group for the existing cluster :
+command:
+
+eksctl create nodegroup \
+  --cluster my-eks-cluster \
+  -- region us-east-1 \
+  --name my-mng-ng \
+  --node-ami-family ami-family \
+  --node-type m5.large \
+  --nodes 3 \
+  --nodes-min 2 \
+  --nodes-max 4 \
+  --ssh-access \
+  --ssh-public-key my-key 
+  
+
+  
